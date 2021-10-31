@@ -1,17 +1,19 @@
 {
   "name": "project-2",
   "version": "1.0.0",
-  "description": "",
+  "description": "Find haunted places near you!",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "seed": "node ./seed/index.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/alonzofroman/project-2.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Alonzo Roman, Matt Stephens, and Andres Liu",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/alonzofroman/project-2/issues"
@@ -26,5 +28,8 @@
     "express-session": "^1.17.2",
     "mysql2": "^2.3.2",
     "sequelize": "^6.8.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.12.1"
   }
 }
