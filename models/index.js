@@ -3,7 +3,6 @@ const Location = require('./Location');
 const Post = require('./Post');
 const Comment = require('./Comment');
 
-// We will define relationships here
 User.hasMany(Post, {
   foreignKey: 'user_id',
 });
