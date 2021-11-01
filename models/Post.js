@@ -46,6 +46,8 @@ Post.init(
     },
     // When another user upvotes a post, this counter is increased
     // PROBLEM: We are going to need to find a way to check if a user has already upvoted a post so that they can't upvote it again and again
+    // SOLVED - thanks Andres!
+    // Upvotes are an array of the user IDs which have upvoted the post. We count the number with .length()
     upVotes: {
       type: DataTypes.INTEGER,
       allowNull: false,

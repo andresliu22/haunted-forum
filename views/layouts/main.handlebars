@@ -13,7 +13,7 @@
   </head>
   <body>
 
-    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark">
       <a class="navbar-brand" href="/">Haunted</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -43,7 +43,7 @@
         </ul>
         <form class="form-inline">
           {{#if loggedIn}}
-          <button class="btn btn-outline-danger" type="button">Log Out</button>
+          <button id="logoutBtn" class="btn btn-outline-danger" type="button">Log Out</button>
           {{else}}
           <a href="/login"><button class="btn btn-outline-success" type="button">Log In</button></a>
           {{/if}}

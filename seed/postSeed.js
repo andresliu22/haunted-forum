@@ -12,6 +12,7 @@ const postData = [
     edited: false,
     location_id: 1,
     user_id: 2,
+    // upVotes: [1, 2],
   },
   {
     creation_date: date.toDateString(),
@@ -23,6 +24,7 @@ const postData = [
     edited: false,
     location_id: 2,
     user_id: 1,
+    // upVotes: [2, 3],
   },
   {
     creation_date: date.toDateString(),
@@ -34,6 +36,7 @@ const postData = [
     edited: false,
     location_id: 3,
     user_id: 2,
+    // upVotes: [1, 2, 3],
   },
 ];
 
