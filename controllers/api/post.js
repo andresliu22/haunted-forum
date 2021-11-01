@@ -5,8 +5,9 @@ const { User, Location, Post, Comment } = require('../../models');
 const { forbidIfNotLogged } = require('../../utils/forRoutes');
 const date = new Date();
 
-router.route('/').post(forbidIfNotLogged, async (req, res) => {
+router.route('/').post(async (req, res) => {
   try {
+    console.log(req.body);
     const newPost = await Post.create({
       creation_date: date.toDateString(),
       specific_location: req.body.specific_location,
@@ -19,11 +20,11 @@ router.route('/').post(forbidIfNotLogged, async (req, res) => {
       // From the cookie. Posts it for the user currently logged in
       user_id: req.session.userId,
     });
-
     !newPost ? res.status(404).json(new Error('There was an error!')) : null;
 
     res.status(200).json(newPost);
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });
