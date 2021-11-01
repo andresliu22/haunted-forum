@@ -11,8 +11,40 @@
 
 body {
   background: var(--main);
+  height: 100vh;
 }
 
 .navbar {
   background: var(--secondary);
+  height: 10%;
+  box-shadow: 0 0 5px black;
+  min-height: 70px;
+}
+
+#searchDiv {
+  background: var(--secondary);
+}
+
+#mainContentRow {
+  height: 90%;
+  min-height: 500px;
+}
+
+#searchDiv,
+#contentDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+#contentDiv {
+  overflow-y: scroll;
+}
+
+@media screen and (max-width: 575px) {
+  #searchDiv {
+    max-height: 150px;
+  }
 }
