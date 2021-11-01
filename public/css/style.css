@@ -48,4 +48,14 @@ body {
   #searchDiv {
     max-height: 150px;
   }
+  .navbar {
+    height: auto;
+    min-height: 70px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .navbar {
+    height: auto;
+  }
 }
