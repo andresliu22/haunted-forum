@@ -1,1 +1,18 @@
-/* For custom styles (later on) */
+/* We are stealing the color scheme from Google's Dark Mode */
+:root {
+  --main: rgb(32, 33, 36);
+  --secondary: rgb(48, 49, 52);
+  --text: rgb(154, 160, 166);
+}
+
+* {
+  color: var(--text);
+}
+
+body {
+  background: var(--main);
+}
+
+.navbar {
+  background: var(--secondary);
+}
