@@ -1,0 +1,29 @@
+// This is causing issues in the "User.js"
+// {
+//   "root": true,
+//   "env": {
+//     "browser": true,
+//     "commonjs": true,
+//     "node": true,
+//     "es6": true
+//   },
+//   "rules": {
+//     "spaced-comment": "error",
+//     "no-const-assign": "error",
+//     "no-extra-semi": "error",
+//     "no-irregular-whitespace": "error",
+//     "no-unreachable": "error",
+//     "eqeqeq": "error",
+//     "no-empty-function": "error",
+//     "no-multi-spaces": "error",
+//     "no-mixed-spaces-and-tabs": "error",
+//     "no-trailing-spaces": "error",
+//     "default-case": "error",
+//     "default-case-last": "error",
+//     "no-use-before-define": "error",
+//     "indent": ["error", 2],
+//     "quotes": ["error", "single"],
+//     "semi": ["error", "always"],
+//     "radix": "off"
+//   }
+// }
