@@ -1,1 +1,10 @@
-<h1>All cities page</h1>
+<div class="container">
+    <h2>All Cities</h2>
+    <div class="row align-items-start">
+        {{#each locations as |location|}}
+        <div class="col-4">
+            <a href="/{{location.id}}">{{location.name}}</a>
+        </div>
+    {{/each}}
+    </div>
+</div>
