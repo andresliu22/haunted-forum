@@ -39,6 +39,11 @@ Post.init(
         len: [15, 500],
       },
     },
+    // When the user edits a post, this is set to true and "edited" is displayed on post
+    edited: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+    },
     location_id: {
       type: DataTypes.INTEGER,
       references: {

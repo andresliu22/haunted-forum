@@ -14,4 +14,11 @@ module.exports = {
       next();
     }
   },
+  forbidIfNotLogged: (req, res, next) => {
+    if (!req.session.loggedIn) {
+      res.status(403).json(new Error('Not logged in!'));
+      return;
+    }
+    next();
+  },
 };
