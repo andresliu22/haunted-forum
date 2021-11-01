@@ -100,7 +100,7 @@ router.post('/login', async (req, res) => {
   try {
     const userData = User.findOne({
       where: {
-        // User uses username to sign in
+        // User uses username to sign in, instead of email
         username: req.body.username,
       },
     });

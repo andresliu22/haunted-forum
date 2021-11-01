@@ -42,7 +42,9 @@ User.init(
       allowNull: false,
       validate: {
         len: [8, 40],
-        // https://stackoverflow.com/questions/58502043/sequelize-validation-using-regular-expression
+        isAlphanumeric: true,
+        // This is causing problems
+        // //https://stackoverflow.com/questions/58502043/sequelize-validation-using-regular-expression
         // validatePassword: function (password) {
         //   if (!/^(?=.[A-Za-z])(?=.\d)[A-Za-z\d]{8,45}$/.test(password)) {
         //     throw new Error(
