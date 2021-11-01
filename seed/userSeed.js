@@ -13,7 +13,7 @@ const userData = [
   {
     creation_date: date.toDateString(),
     email: 'mattsucks@hotmail.com',
-    username: 'mattSucksAlot4',
+    username: 'mattSucksAlot',
     password: 'biggieSmalls945',
   },
   // id 3
