@@ -44,6 +44,13 @@ Post.init(
       type: DataTypes.BOOLEAN,
       allowNull: false,
     },
+    // When another user upvotes a post, this counter is increased
+    // PROBLEM: We are going to need to find a way to check if a user has already upvoted a post so that they can't upvote it again and again
+    upVotes: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0,
+    },
     location_id: {
       type: DataTypes.INTEGER,
       references: {
