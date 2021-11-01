@@ -13,7 +13,7 @@ const userData = [
   {
     creation_date: date.toDateString(),
     email: 'mattsucks@hotmail.com',
-    username: 'mattSucksAlot',
+    username: 'mattSucksAlot4',
     password: 'biggieSmalls945',
   },
   // id 3
@@ -25,10 +25,7 @@ const userData = [
   },
 ];
 
-const seedUser = () => {
-  User.create(userData[0]);
-  User.create(userData[1]);
-  User.create(userData[2]);
-};
+// Since we are bulk creating, these passwords will not be hashed
+const seedUser = () => User.bulkCreate(userData);
 
 module.exports = seedUser;
