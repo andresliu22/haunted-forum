@@ -7,7 +7,7 @@
                 <h5 class="card-title">{{title}}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">{{post.user.username}}</h6>
                 <p class="card-text">{{post.body}}</p>
-                <p>Date posted {{format_date post.creation_date}}</p>
+                <p>Date posted {{format_date post.creation_date}} at {{format_time post.creation_date}}</p>
             </div>
         </div>
         {{#each post.comments as |comment|}}
