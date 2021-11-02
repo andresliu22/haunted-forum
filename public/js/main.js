@@ -27,11 +27,15 @@ const renderPosts = (posts) => {
     aTag.classList.add('mb-2');
     aTag.innerHTML = `<div class="card w-100">
     <div class="card-body">
-      <img class="float-left" src="${post.image_link}" style="max-width:50px">
-      <h5 class="card-title">${post.title}</h5>
-      <h6 class="card-subtitle mb-2 text-muted">Username will go here</h6>
-      <p class="card-text">${post.body}</p>
-      <p>Also need to include the username and date posted</p>
+      <div>
+        <img class="float-left" src="${post.image_link}" style="max-width:50px">
+      </div>
+      <div>
+        <h5 class="card-title">${post.title}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Username will go here</h6>
+        <p class="card-text">${post.body}</p>
+        <p>Also need to include the username and date posted</p>
+      </div>
     </div>
   </div>`;
     document.querySelector('#contentDiv').appendChild(aTag);
