@@ -5,4 +5,7 @@ module.exports = {
   getPlacesKey: () => {
     return process.env.PLACES_KEY;
   },
+  format_time: (date) => {
+    return date.toLocaleTimeString();
+  },
 };

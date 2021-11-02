@@ -4,15 +4,17 @@
 <a href="/posts/{{id}}" class="post-card mb-2">
 <div class="card w-100">
 
-  <div class="card-body">
-    <img class="float-left" src="{{image_link}}" style="max-width:50px">
-    <h5 class="card-title">{{title}}</h5>
-    <h6 class="card-subtitle mb-2 text-muted">Username will go here</h6>
-    <p class="card-text">{{body}}</p>
-    <p class="card-text">{{location}}</p>
-    <p class="card-text">{{specific_location}}</p>
+  <div class="card-body d-flex">
+    <div>
+      <img class="float-left" src="{{image_link}}" style="max-width:50px">
+    </div>
+    <div>
+      <h5 class="card-title">{{title}}</h5>
+      {{!-- <h6 class="card-subtitle mb-2 text-muted">{{user.username}}</h6> --}}
+      <p class="card-text">{{body}}</p>
+      <h6>Posted By: {{user.username}} on {{format_date creation_date}} {{format_time creation_date}}</h6>
+    </div>
 
-    <p>Also need to include the username and date posted</p>
   </div>
 </div>
 </a>
