@@ -1,0 +1,26 @@
+    <div class="modal fade" id="newPostModal" tabindex="-1" role="dialog" aria-labelledby="newPostModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="newPostModalLabel">New Post</h5>
+            <button type="button" class="close btn" data-dismiss="modal" aria-label="Close" style="font-size: 2rem;">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          
+            <div class="card w-100">
+                <div class="card-body">
+                    <img class="float-left" src="{{image_link}}" style="max-width:50px">
+                    <h5 class="card-title">{{post.title}}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{user.username}}</h6>
+                    <p class="card-text">{{post.body}}</p>
+                    
+                </div>
+            </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>
