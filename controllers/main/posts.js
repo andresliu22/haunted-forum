@@ -4,7 +4,9 @@ const { User, Location, Post, Comment } = require('../../models');
 // Only show the 10 most recent posts
 router.get('/recent', async (req, res) => {
   try {
-    const postData = await Post.findAll();
+    const postData = await Post.findAll({
+      include: [{model: User}]
+    });
 
     !postData ? res.status(404).json(new Error('There was an error!')) : null;
 

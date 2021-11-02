@@ -9,9 +9,9 @@
     </div>
     <div>
       <h5 class="card-title">{{title}}</h5>
-      <h6 class="card-subtitle mb-2 text-muted">Username will go here</h6>
+      {{!-- <h6 class="card-subtitle mb-2 text-muted">{{user.username}}</h6> --}}
       <p class="card-text">{{body}}</p>
-      <p>Also need to include the username and date posted</p>
+      <h6>Posted By: {{user.username}} on {{format_date creation_date}}</h6>
     </div>
   </div>
 </div>
