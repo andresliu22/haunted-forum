@@ -55,6 +55,7 @@
         </form>
       </div>
     </nav>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbu8a2163MJhjkvN3MQwWmamvYJE_jKx8&libraries=places"></script>
 
   {{#if loggedIn}}
     {{> newpostmodal}}
@@ -62,7 +63,6 @@
 
     {{{body}}}
 
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbu8a2163MJhjkvN3MQwWmamvYJE_jKx8&libraries=places"></script>
     {{!-- If logged in, source the logout.js for logout functionality --}}
     {{#if loggedIn}}
     <script src="/js/logout.js"></script>

@@ -2,7 +2,7 @@ const input = document.getElementById('searchInput');
 const searchArea = document.querySelector('.search-column');
 const button = searchArea.querySelector('button');
 
-const autocomplete = new google.maps.places.Autocomplete(input, {
+const searchAutocomplete = new google.maps.places.Autocomplete(input, {
   types: ['(cities)'],
 });
 
