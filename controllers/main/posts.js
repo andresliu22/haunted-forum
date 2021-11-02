@@ -24,7 +24,7 @@ router.get('/post/:id', async (req, res) => {
           include: [{ model: User, attributes: ['id','username']},
       { model: Comment, attributes: ['id', 'body', 'post_id', 'user_id', 'creation_date'], include: [{ model: User, attributes: ['id', 'username']}]}],
       });
-
+      console.log(postData);
       !postData ? res.status(404).json(new Error('Failed to grab post')) : null;
 
       const post = postData.get({plain:true});
