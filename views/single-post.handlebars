@@ -1,7 +1,7 @@
 <div class="container">
-
+        <br>
         <div class="card w-100">
-            <div class="card-header"><h2>{{post.title}}</h2></div>
+            <div class="card-header bg-secondary"><h2>{{post.title}}</h2></div>
             <div class="card-body">
                 <img class="float-left" src="{{post.image_link}}" style="max-width:50px">
                 <h5 class="card-title">{{title}}</h5>
@@ -11,8 +11,9 @@
             </div>
         </div>
         {{#each post.comments as |comment|}}
+        <br>
         <div class="card w-100">
-            <div class="card-header"><h3>{{comment.user.username}}</h3></div>
+            <div class="card-header bg-secondary"><h3>{{comment.user.username}}</h3></div>
             <div class="card-body">
                 <p>{{comment.body}}</p>
                 <p>Date posted: {{format_date comment.creation_date}}</p>    
@@ -20,5 +21,18 @@
         
         </div>
         {{/each}}
+
+        {{#if loggedIn}}
+            <br>
+            <form class="form w-100">
+                <div
+
+            </form>
+            <button class="btn btn-secondary">Add Comment</button>
+        {{/if}}
     
 </div>
+
+{{#if loggedIn}}
+    <script src="/js/comment.js"></script>
+{{/if}}
