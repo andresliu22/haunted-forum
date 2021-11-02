@@ -1,12 +1,22 @@
 # project-2
 
-# Project description 
+## Table of Contents
+* [Summary](#Summary)
+* [Wireframe](#Wireframe)
+* [Code](#Code-Snippet)
+* [User-Story](#User-Story)
+* [Technologies](#Technologies)
+* [Authors](#Authors)
+* [Acknowledgements](#Acknowledgements)
+
+## Summary 
 The purpose of this site is to create a forum that users can log into and see posts organized by city detailing any local hauntings or ghost sightings that they have experienced. Users can register accounts, search cities, create posts and embed images. Users can also commont on or vote on others' posts. Posts, locations, and users are stored server-side.
 
 
-## Original Wireframe
+## Wireframe
 
-![Image](./assets/development/frontend-wireframe.jpg)
+![Image](./assets/development/frontend_wireframe.jpg)
+![Image](./assets/development/backend_wireframe.jpeg)
 
 ## Code Snippet
 
@@ -15,9 +25,11 @@ The purpose of this site is to create a forum that users can log into and see po
 ## Steps
 
 - Initial framework of pages
-
-- 
-
+- Set up API routes
+- Set up models
+- Set up handlebar pages
+- Page functionality
+- Design/styling of pages
 
 
 
