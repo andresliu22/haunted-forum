@@ -1,8 +1,10 @@
 const editPostForm = document.querySelector('#updatePostBtn');
 const deletePost = document.querySelector('#deletePostBtn');
+const editPostBtn = document.querySelector('.editPost');
+
+var post_id;
 
 const handleEditPost = async (e) => {
-  const post_id = e.target.getAttribute('data-post');
   console.log("RAWREARSAA");
   console.log(post_id);
   const location = document
@@ -30,7 +32,7 @@ const handleEditPost = async (e) => {
     alert('Make sure the body is longer than 15 characters!');
   }
 
-  const response = await fetch(`/api/posts/:${post_id}`, {
+  const response = await fetch(`/api/posts/${post_id}`, {
     method: 'PUT',
     body: JSON.stringify({
       location,
@@ -48,8 +50,7 @@ const handleEditPost = async (e) => {
 };
 
 const handleDeletePost = async (e) => {
-    const post_id = e.target.getAttribute('data-post');
-    const response = await fetch(`/api/posts/:${post_id}`, {
+    const response = await fetch(`/api/posts/${post_id}`, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
       });
@@ -58,15 +59,21 @@ const handleDeletePost = async (e) => {
         ? document.location.replace('/dashboard')
         : alert('Post failed, try again!');
 }
-// $(document).ready(function() {
 
-//     $('a[data-toggle=modal], button[data-toggle=modal]').click(function (event) {
-  
-//         const post = event.target.getAttribute('data-post');
-//         console.log(post);
-//     })
-//   });
+const getPostId = (e) => {
+    post_id = e.target.getAttribute('data-post');
+    const post = JSON.parse(e.target.getAttribute('data-object'));
+    console.log(post['specific_location']);
+    document.querySelectorAll('.edit-modal-body input')[0].value = post[location];
+    document.querySelectorAll('.edit-modal-body input')[1].value = post[specific_location];
+    document.querySelectorAll('.edit-modal-body input')[2].value = post[image_link];
+    document.querySelectorAll('.edit-modal-body input')[3].value = post[title];
+    document.querySelectorAll('.edit-modal-body textarea')[0].value = post[body];
+
+}
 
 editPostForm.addEventListener('click', handleEditPost);
 deletePost.addEventListener('click', handleDeletePost);
+editPostBtn.addEventListener('click', getPostId);
+
 

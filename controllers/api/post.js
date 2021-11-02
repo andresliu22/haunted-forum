@@ -63,10 +63,9 @@ router
 router
   .route('/:id')
   .put(forbidIfNotLogged, async (req, res) => {
-    try {
+    try {      
       const edited = await Post.update(
         {
-          location: req.body.location,
           specific_location: req.body.specific_location,
           image_link: req.body.image_link,
           title: req.body.title,
@@ -80,7 +79,7 @@ router
           },
         }
       );
-
+      
       !edited ? res.status(404).json(new Error('There was an error!')) : null;
 
       res.status(200).json(edited);
