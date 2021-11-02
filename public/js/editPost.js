@@ -61,8 +61,15 @@ const handleDeletePost = async (e) => {
 }
 
 const getPostId = (e) => {
-    console.log(e.target.getAttribute('data-post'));
     post_id = e.target.getAttribute('data-post');
+    const post = JSON.parse(e.target.getAttribute('data-object'));
+    console.log(post['specific_location']);
+    document.querySelectorAll('.edit-modal-body input')[0].value = post[location];
+    document.querySelectorAll('.edit-modal-body input')[1].value = post[specific_location];
+    document.querySelectorAll('.edit-modal-body input')[2].value = post[image_link];
+    document.querySelectorAll('.edit-modal-body input')[3].value = post[title];
+    document.querySelectorAll('.edit-modal-body textarea')[0].value = post[body];
+
 }
 
 editPostForm.addEventListener('click', handleEditPost);
