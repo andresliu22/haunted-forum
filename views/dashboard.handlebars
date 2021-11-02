@@ -1,14 +1,6 @@
-{{!-- {{#each user.post}}
-<div class="container">
-    <a href="/post/{{id}}">
-        <div class="row">
-            <img src="{{image_link}}" alt="image">
-            <h2>{{title}}</h2>
-            <p>{{body}}</p>
-        </div>
-    </a>
-</div>
-{{/each}} --}}
+{{#each user.posts}}
+  {{> post}}
+{{/each}}
 
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newPostModal" data-whatever="@getbootstrap">New Post</button>
 
@@ -52,5 +44,7 @@
     </div>
   </div>
 </div>
+
+
 
 <script src="/js/dashboard.js"></script>

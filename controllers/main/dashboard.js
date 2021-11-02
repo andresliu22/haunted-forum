@@ -18,7 +18,6 @@ router.get('/', redirectIfNotLogged, async (req, res) => {
     !userData ? res.status(404).json(new Error('There was an error!')) : null;
 
     const user = await userData.get({ plain: true });
-    console.log(user);
     res.render('dashboard', { loggedIn: req.session.loggedIn, user });
   } catch (err) {
     res.status(500).json(err);
