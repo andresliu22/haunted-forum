@@ -39,8 +39,18 @@ i {
   width: 100%;
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   align-items: center;
+}
+
+.container-full {
+  height: 90%;
+  width: 100%;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  flex-direction: column;
+  overflow-y: scroll;
 }
 
 .contain {
@@ -66,6 +76,7 @@ i {
 
 #searchForm {
   width: 75%;
+  transition: all 0.2s linear;
 }
 
 .results-column {
@@ -95,8 +106,8 @@ i {
   justify-content: center;
   align-items: center;
   font-size: 3rem;
-  opacity: 0%;
   transition: all 0.2s linear;
+  opacity: 0%;
   z-index: 3;
 }
 
@@ -119,14 +130,16 @@ i {
   .search-column {
     width: 100%;
     height: auto;
+    /* min-height: 200px; */
   }
   .results-column {
     width: 100%;
     height: auto;
+    min-height: 500px;
   }
   .arrow-container {
     left: 0%;
-    bottom: -20%;
+    bottom: -15%;
   }
   .arrow-container > i {
     transform: none;
@@ -135,7 +148,7 @@ i {
     width: 50%;
   }
   #contentDiv {
-    margin-top: 5%;
+    margin-top: 10%;
   }
 }
 

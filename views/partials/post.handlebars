@@ -1,9 +1,14 @@
-<div class="container">
-    <a href="/post/{{id}}">
-        <div class="row">
-            <img src="{{image_link}}" alt="image">
-            <h2>{{title}}</h2>
-            <p>{{body}}</p>
-        </div>
-    </a>
+{{!-- THIS HREF WILL CHANGE LATER --}}
+{{!-- it will route back to main with the post's id as a query --}}
+{{!-- I can set that up -Matt --}}
+<a href="/post/{{id}}" style="width: 75%; min-width: 300px" class="mb-2">
+<div class="card w-100">
+  <div class="card-body">
+    <img class="float-left" src="{{image_link}}" style="max-width:50px">
+    <h5 class="card-title">{{title}}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">Username will go here</h6>
+    <p class="card-text">{{body}}</p>
+    <p>Also need to include the username and date posted</p>
+  </div>
 </div>
+</a>

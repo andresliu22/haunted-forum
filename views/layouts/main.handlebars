@@ -18,7 +18,7 @@
 
     <nav class="navbar sticky-top navbar-expand-lg navbar-dark">
       <a class="navbar-brand" href="/">
-        <img src="/assets/images/haunted-grey.png" style="max-width: 45px"/>
+        <img src="/assets/images/haunted-grey.png" style="max-width: 45px" alt="Haunted's Logo"/>
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -33,7 +33,7 @@
             <a class="nav-link" href="/dashboard"><i class="fas fa-user"></i>My Profile</a>
           </li>
           <li class="nav-item new-post">
-            <a class="nav-link" href="/dashboard/new"><i class="fas fa-plus"></i>New Post</a>
+            <a class="nav-link" data-toggle="modal" data-target="#newPostModal" data-whatever="@getbootstrap"><i class="fas fa-plus"></i>New Post</a>
           </li>
           {{/if}}
           <li class="nav-item dropdown">
@@ -56,8 +56,13 @@
       </div>
     </nav>
 
+  {{#if loggedIn}}
+    {{> newpostmodal}}
+  {{/if}}
+
     {{{body}}}
 
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbu8a2163MJhjkvN3MQwWmamvYJE_jKx8&libraries=places"></script>
     {{!-- If logged in, source the logout.js for logout functionality --}}
     {{#if loggedIn}}
     <script src="/js/logout.js"></script>
