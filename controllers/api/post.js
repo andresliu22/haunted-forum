@@ -63,7 +63,7 @@ router
 router
   .route('/:id')
   .put(forbidIfNotLogged, async (req, res) => {
-    try {
+    try {      
       const edited = await Post.update(
         {
           location: req.body.location,
@@ -80,7 +80,7 @@ router
           },
         }
       );
-
+      
       !edited ? res.status(404).json(new Error('There was an error!')) : null;
 
       res.status(200).json(edited);
