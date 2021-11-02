@@ -21,11 +21,13 @@ Post.belongsTo(Location, {
 
 User.hasMany(Comment, {
   foreignKey: 'user_id',
+  constraints: false,
   // Comments of user are deleted if user is deleted
   onDelete: 'CASCADE',
 });
 Comment.belongsTo(User, {
   foreignKey: 'user_id',
+  constraints: false,
 });
 
 Post.hasMany(Comment, {

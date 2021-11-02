@@ -24,7 +24,7 @@ router.get('/:id', async (req, res) => {
           include: [{ model: User},
       { model: Comment, include: [{ model: User}]}],
       });
-      console.log(postData);
+      // console.log(postData);
       !postData ? res.status(404).json(new Error('Failed to grab post')) : null;
     const post = postData.get({ plain: true });
     res.render('single-post', { post, loggedIn: req.session.loggedIn });

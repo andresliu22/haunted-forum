@@ -8,7 +8,9 @@ const addComment = async (event) => {
         alert('Fill out the comment field');
         return;
     }
-    const response = await fetch(`/api/post/${document.location.href[document.location.href.length-1]}/comment`, {
+    const urlId = document.location.href.split('/')[4]; 
+
+    const response = await fetch(`/api/posts/${urlId}/comment`, {
         method: 'POST',
         body: JSON.stringify({body}),
         headers: {'Content-Type': 'application/json'}});

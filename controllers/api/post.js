@@ -111,13 +111,14 @@ router
   .route('/:id/comment')
   .post(forbidIfNotLogged, async (req, res) => {
     try {
+      console.log(req.body, req.params);
       const commented = await Comment.create({
         creation_date: date.toDateString(),
         body: req.body.body,
         user_id: req.session.userId,
         post_id: req.params.id,
       });
-
+      console.log(commented);
       !commented
         ? res.status(404).json(new Error('There was an error!'))
         : null;
@@ -125,6 +126,7 @@ router
       res.status(200).json(commented);
     } catch (err) {
       res.status(500).json(err);
+      console.log(err);
     }
   })
   // Editing comments - THIS IS NOT COMPLETE - one of the last features to implement
