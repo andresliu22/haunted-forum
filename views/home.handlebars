@@ -9,15 +9,31 @@
 </ul>
 <p>This will simplify our app and prevent us from having 232349872498 pages</p> --}}
 
-  <div id="mainContentRow" class="row">
-      <div id="searchDiv" class="col-xs-11 col-sm-3 h-xs-20">
-        <h1>Search for a location!</h1>
-        <form class="form-inline">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+    <div class="wrapper">
+      <div class="contain">
+        <div class="search-column">
+
+          <form id="searchForm" class="form-inline">
+            <h1>Search for a location!</h1>
+            <input id="searchInput" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button id="searchBtn" class="btn btn-outline-success my-2 my-sm-0" type="submit" disabled>Search</button>
+          </form>
+
+          <div class='arrow-container'>
+            <i class="fas fa-arrow-down"></i>
+          </div>
+
+        </div>
+        <div class="results-column">
+          
+          <div id="contentDiv" class="col-xs-11 col-sm-8">
+            <h2>Locations go here</h2>
+            <p>This div will overflow y scroll</p>
+            <p>Each post will pop up as a modal</p>
+          </div>
+
+        </div>
       </div>
-      <div id="contentDiv" class="col-xs-11 col-sm-8">
-        <h1>Locations go here</h1>
-      </div>
-  </div>
+    </div>
+
+  <script src="/js/main.js"></script>

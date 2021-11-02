@@ -10,3 +10,7 @@ const handleLogout = async () => {
 };
 
 document.getElementById('logoutBtn').addEventListener('click', handleLogout);
+
+document.querySelector('.new-post').addEventListener('mouseover', () => {
+  document.querySelectorAll('.new-post i')[0].classList.toggle('rotated');
+});

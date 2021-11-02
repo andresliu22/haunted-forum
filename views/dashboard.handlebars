@@ -1,56 +1,11 @@
-{{!-- {{#each user.post}}
-<div class="container">
-    <a href="/post/{{id}}">
-        <div class="row">
-            <img src="{{image_link}}" alt="image">
-            <h2>{{title}}</h2>
-            <p>{{body}}</p>
-        </div>
-    </a>
-</div>
-{{/each}} --}}
+<div class="container-full">
+  {{!-- All user's posts --}}
+  {{#each user.posts}}
+    {{!-- We must also render an edit button here --}}
+    {{> post}}
+  {{/each}}
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newPostModal" data-whatever="@getbootstrap">New Post</button>
-
-<div class="modal fade" id="newPostModal" tabindex="-1" role="dialog" aria-labelledby="newPostModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="newPostModalLabel">New Post</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <form class="form" id="new-post-form">
-      <div class="modal-body">
-          <div class="form-group">
-            <label for="post-location" class="col-form-label">Location:</label>
-            <input class="form-control" id="post-location"></input>
-          </div>
-          <div class="form-group">
-            <label for="post-specific-location" class="col-form-label">Specific Location:</label>
-            <input type="text" class="form-control" id="post-specific-location">
-          </div>
-          <div class="form-group">
-            <label for="post-img" class="col-form-label">Image:</label>
-            <input type="text" class="form-control" id="post-img">
-          </div>
-          <div class="form-group">
-            <label for="post-title" class="col-form-label">Title:</label>
-            <input type="text" class="form-control" id="post-title">
-          </div>
-          <div class="form-group">
-            <label for="post-body" class="col-form-label">Body:</label>
-            <textarea class="form-control" id="post-body"></textarea>
-          </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Create Post</button>
-      </div>
-      </form>
-    </div>
-  </div>
-</div>
+  {{!-- New Post modal button --}}
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newPostModal" data-whatever="@getbootstrap">New Post</button>
 
 <script src="/js/dashboard.js"></script>

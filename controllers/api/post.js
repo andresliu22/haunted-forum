@@ -5,9 +5,8 @@ const { User, Location, Post, Comment } = require('../../models');
 const { forbidIfNotLogged } = require('../../utils/forRoutes');
 const date = new Date();
 
-router.route('/').post(async (req, res) => {
+router.route('/').post(forbidIfNotLogged, async (req, res) => {
   try {
-    console.log(req.body);
     const newPost = await Post.create({
       creation_date: date.toDateString(),
       specific_location: req.body.specific_location,
@@ -24,8 +23,8 @@ router.route('/').post(async (req, res) => {
 
     res.status(200).json(newPost);
   } catch (err) {
-    console.log(err);
     res.status(500).json(err);
+    console.log(err);
   }
 });
 
