@@ -3,6 +3,7 @@
   {{#each user.posts}}
     {{!-- We must also render an edit button here --}}
     {{> post}}
+    <button type="button" class="btn btn-secondary editPost" style="position:relative; top: -50px;" data-toggle="modal" data-post="{{id}}" data-target="#editPostModal" data-whatever="@getit">Edit Post</button>
   {{/each}}
 
   {{!-- New Post modal button --}}

@@ -1,0 +1,42 @@
+    <div class="modal fade" id="editPostModal" tabindex="-1" role="dialog" aria-labelledby="editPostModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="editPostModalLabel">Edit Post</h5>
+            <button type="button" class="close btn" data-dismiss="modal" aria-label="Close" style="font-size: 2rem;">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="edit-modal-body">
+              <div class="form-group">
+                <label for="post-location" class="col-form-label">Location:</label>
+                <input class="form-control" id="post-location"/>
+                <small id="passwordHelp" class="form-text text-muted">Enter your location.</small>
+              </div>
+
+              <div class="form-group">
+                <label for="post-specific-location" class="col-form-label">Specific Location:</label>
+                <input type="text" class="form-control" id="post-specific-location">
+              </div>
+              <div class="form-group">
+                <label for="post-img" class="col-form-label">Image:</label>
+                <input type="text" class="form-control" id="post-img">
+              </div>
+              <div class="form-group">
+                <label for="post-title" class="col-form-label">Title:</label>
+                <input type="text" class="form-control" id="post-title">
+              </div>
+              <div class="form-group">
+                <label for="post-body" class="col-form-label">Body:</label>
+                <textarea class="form-control" id="post-body"></textarea>
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button id="updatePostBtn" type="button" class="btn btn-success">Update Post</button>
+            <button id="deletePostBtn" type="button" class="btn btn-danger" >Delete Post</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="/js/editPost.js"></script>

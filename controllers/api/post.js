@@ -66,6 +66,7 @@ router
     try {
       const edited = await Post.update(
         {
+          location: req.body.location,
           specific_location: req.body.specific_location,
           image_link: req.body.image_link,
           title: req.body.title,
