@@ -7,14 +7,18 @@
                 <h5 class="card-title">{{title}}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">{{post.user.username}}</h6>
                 <p class="card-text">{{post.body}}</p>
-                <p>Date posted </p>
+                <p>Date posted {{post.creation_date}}</p>
             </div>
         </div>
         {{#each comment as |comment|}}
         <div class="card w-100">
             <div class="card-header"><h3>{{comment.user.username}}</h3></div>
-            <div class="card-body"><p>{{comment.body}}</p></div>
-
+            <div class="card-body">
+                <p>{{comment.body}}</p>
+                <p>Date posted: {{comment.creation_date}}</p>    
+            </div>
+        
         </div>
+        {{/each}}
     
 </div>
