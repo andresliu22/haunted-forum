@@ -11,7 +11,7 @@ const locationData = [
   },
   // id 3
   {
-    name: 'Calgary, Alberta, Canada',
+    name: 'Olomouc, Czechia',
   },
 ];
 
