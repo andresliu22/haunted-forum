@@ -1,7 +1,7 @@
 // Adds a comment from the single post page
 const addComment = async (event) => {
     event.preventDefault();
-    document.getElementById("").disabled = true;
+    document.getElementById("comment-btn").disabled = true;
 
     const body = document.querySelector("#new-comment").value.trim();
     if (!body) {
@@ -13,7 +13,7 @@ const addComment = async (event) => {
         body: JSON.stringify({body}),
         headers: {'Content-Type': 'application/json'}});
 
-    response.ok? document.location.reload(): alert('Failed to add comment');  
+    response.ok? document.location.reload(): alert('Failed to add comment');
 };
 
 document.querySelector("#comment-form").addEventListener('submit', addComment);

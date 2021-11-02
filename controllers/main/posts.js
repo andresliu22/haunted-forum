@@ -26,11 +26,10 @@ router.get('/:id', async (req, res) => {
       });
       console.log(postData);
       !postData ? res.status(404).json(new Error('Failed to grab post')) : null;
-
-      const post = postData.get({plain:true});
-      res.render('single-post', {post, loggedIn: req.session.loggedIn});
+    const post = postData.get({ plain: true });
+    res.render('single-post', { post, loggedIn: req.session.loggedIn });
   } catch (err) {
-      res.status(500).json(err);
+    res.status(500).json(err);
   }
 });
 
