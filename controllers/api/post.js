@@ -10,7 +10,7 @@ router
   .post(forbidIfNotLogged, async (req, res) => {
     try {
       const newPost = await Post.create({
-        creation_date: date.toDateString(),
+        creation_date: date,
         specific_location: req.body.specific_location,
         image_link: req.body.image_link,
         title: req.body.title,
