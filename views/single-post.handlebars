@@ -10,8 +10,19 @@
                 <p>Posted on {{format_date post.creation_date}} at {{format_time post.creation_date}}</p>
             </div>
         </div>
+        {{#if loggedIn}}
+            <form class="form w-100" id="comment-form">
+                <div class="form-group w-100">
+                    <textarea class="form-input w-100" type="text" id="new-comment" style="resize: none;"></textarea>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-secondary submit" id="comment-btn">Add Comment</button>
+                </div>
+            </form>
+        {{else}}
+        <h4><a href="/login">Log in</a> to leave a comment!</h4>
+        {{/if}}
         {{#each post.comments as |comment|}}
-        <br>
         <div class="card w-100">
             <div class="card-header bg-secondary"><h3>{{comment.user.username}}</h3></div>
             <div class="card-body">
@@ -23,18 +34,6 @@
         {{/if}}
         </div>
         {{/each}}
-
-        {{#if loggedIn}}
-            <br>
-            <form class="form w-100" id="comment-form">
-                <div class="form-group w-100">
-                    <textarea class="form-input w-100" type="text" id="new-comment" style="resize: none;"></textarea>
-                </div>
-                <div class="form-group">
-                    <button class="btn btn-secondary submit" id="comment-btn">Add Comment</button>
-                </div>
-            </form>
-        {{/if}}
     
 </div>
 
