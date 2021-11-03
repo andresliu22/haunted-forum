@@ -3,10 +3,11 @@
         <div class="card w-100">
             <div class="card-header bg-secondary"><h2>{{post.title}}</h2></div>
             <div class="card-body">
-                <img class="float-left" src="{{post.image_link}}" style="max-width:50px">
+                <img class="mx-auto d-block" src="{{post.image_link}}" style="w-75">
                 <h5 class="card-title">{{title}}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">{{post.user.username}}</h6>
                 <p class="card-text">{{post.body}}</p>
+                <p>{{post.location.name}}</p>
                 <p>Posted on {{format_date post.creation_date}} at {{format_time post.creation_date}}</p>
             </div>
         </div>
