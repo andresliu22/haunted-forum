@@ -4,7 +4,7 @@
     {{!-- We must also render an edit button here --}}
     {{> post}}
     <button type="button" class="btn btn-secondary editPost" style="position:relative; top: -50px;" data-toggle="modal" data-post='{{id}}' 
-      data-object='{"location": "{{location}}", "specific_location": "{{specific_location}}", 
+      data-object='{"specific_location": "{{specific_location}}", 
       "image_link": "{{image_link}}", "title": "{{title}}", "body": "{{body}}"}' data-target="#editPostModal" data-whatever="@getit">Edit Post</button>
   {{/each}}
   
