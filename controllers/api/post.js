@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Location, Post, Comment, Vote } = require('../../models');
+const { User, Location, Post, Comment, Vote, Reply } = require('../../models');
 // If they're not even logged in, immediately throw a forbidden 403
 // For tasks we don't want to even risk initializing if they're not logged in
 const { forbidIfNotLogged } = require('../../utils/forRoutes');
@@ -223,5 +223,7 @@ router.post('/:id/upvote', async (req, res) => {
     console.log(err);
   }
 });
+
+
 
 module.exports = router;

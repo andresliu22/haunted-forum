@@ -3,6 +3,8 @@ const Location = require('./Location');
 const Post = require('./Post');
 const Comment = require('./Comment');
 const Vote = require('./Vote');
+const Reply = require('./Reply');
+
 
 User.hasMany(Post, {
   foreignKey: 'user_id',
@@ -55,4 +57,23 @@ Vote.belongsTo(Post, {
   foreignKey: 'post_id',
 });
 
-module.exports = { User, Location, Post, Comment, Vote };
+// Reply
+
+User.hasMany(Reply, {
+  foreignKey: 'user_id',
+});
+
+Comment.hasMany(Reply, {
+  foreignKey: 'comment_id'
+});
+
+Reply.belongsTo(User, {
+  foreignKey: 'user_id'
+})
+
+Reply.belongsTo(Comment, {
+  foreignKey: 'comment_id'
+})
+
+
+module.exports = { User, Location, Post, Comment, Vote, Reply };
