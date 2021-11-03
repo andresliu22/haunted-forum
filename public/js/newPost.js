@@ -56,14 +56,17 @@ const handleNewPost = async (e) => {
 
   if (body.length < 15) {
     alert('Make sure the body is longer than 15 characters!');
+    return;
   }
 
   if (title.length > 45) {
     alert('The title is too long!');
+    return;
   }
 
   if (isUrl(image_link) === false) {
     alert('Please make sure you insert a valid link for the image!');
+    return;
   }
 
   const response = await fetch('/api/posts', {
