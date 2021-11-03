@@ -35,9 +35,6 @@ Post.init(
     body: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-        len: [15, 10000],
-      },
     },
     // When the user edits a post, this is set to true and "edited" is displayed on post
     edited: {
