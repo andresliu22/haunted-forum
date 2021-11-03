@@ -76,7 +76,9 @@ const handleNewPost = async (e) => {
 
   response.ok
     ? document.location.replace('/dashboard')
-    : alert('Post failed, try again!');
+    : alert(
+        'Post failed, try again! Remember that you can only post once every 10 minutes!'
+      );
 };
 
 newPostForm.addEventListener('submit', handleNewPost);
