@@ -3,7 +3,7 @@ const date = new Date();
 
 const postData = [
   {
-    creation_date: date.toDateString(),
+    creation_date: date,
     specific_location: 'Under the bridge',
     image_link:
       'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/cute-cat-photos-1593441022.jpg?crop=0.669xw:1.00xh;0.166xw,0&resize=640:*',
@@ -15,7 +15,7 @@ const postData = [
     // upVotes: [1, 2],
   },
   {
-    creation_date: date.toDateString(),
+    creation_date: date,
     specific_location: 'In my house',
     image_link:
       'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/cute-cat-photos-1593441022.jpg?crop=0.669xw:1.00xh;0.166xw,0&resize=640:*',
@@ -27,7 +27,7 @@ const postData = [
     // upVotes: [2, 3],
   },
   {
-    creation_date: date.toDateString(),
+    creation_date: date,
     specific_location: 'Abandoned house by the church',
     image_link:
       'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/cute-cat-photos-1593441022.jpg?crop=0.669xw:1.00xh;0.166xw,0&resize=640:*',

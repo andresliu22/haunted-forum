@@ -8,4 +8,8 @@ module.exports = {
   format_time: (date) => {
     return date.toLocaleTimeString();
   },
+  eq: (param1, param2) => {
+    if (param1 == param2) return true;
+    return false;
+  },
 };
