@@ -5,7 +5,7 @@ const { User, Location, Post, Comment } = require('../../models');
 router.get('/recent', async (req, res) => {
   try {
     const postData = await Post.findAll({
-      include: [{ model: User }],
+      include: [{ model: User }, {model: Location}],
       order: [['id', 'DESC']],
     });
 
@@ -26,7 +26,7 @@ router.get('/:id', async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id, {
       include: [
-        { model: User },
+        { model: User }, {model: Location}, 
         { model: Comment, include: [{ model: User }] },
       ],
     });
