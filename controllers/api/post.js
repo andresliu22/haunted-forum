@@ -34,8 +34,9 @@ router
       // If minutes is less than 10, then they are DENIED
       if (minutes < 10) {
         res
-          .status(404)
+          .status(403)
           .json({ message: 'Can only post once every 10 minutes!' });
+        return;
       }
 
       const newPost = await Post.create({
