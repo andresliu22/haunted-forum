@@ -1,5 +1,5 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const { Model, DataTypes } = require("sequelize");
+const sequelize = require("../config/connection");
 
 class Post extends Model {}
 
@@ -28,12 +28,12 @@ Post.init(
     title: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-        len: [1, 250],
-      },
+      // validate: {
+      //   len: [1, 250],
+      // },
     },
     body: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT("long"),
       allowNull: false,
     },
     // When the user edits a post, this is set to true and "edited" is displayed on post
@@ -53,15 +53,15 @@ Post.init(
     location_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'location',
-        key: 'id',
+        model: "location",
+        key: "id",
       },
     },
     user_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'user',
-        key: 'id',
+        model: "user",
+        key: "id",
       },
     },
   },
@@ -70,7 +70,7 @@ Post.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'post',
+    modelName: "post",
   }
 );
 
