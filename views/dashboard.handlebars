@@ -1,3 +1,13 @@
+<div class="container">
+  <div class="row">
+    {{#if createdToday}}
+      <p>Account was created today</p>
+    {{else}}
+      <p>Account was created {{daysCreated}} days ago</p>
+    {{/if}}
+  </div> 
+</div>
+
 <div class="container-full">
   {{!-- All user's posts --}}
   {{#each user.posts}}
@@ -11,6 +21,8 @@
   {{!-- New Post modal button --}}
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newPostModal" data-whatever="@getbootstrap">New Post</button>
 </div>
+
+ 
 
 <script src="/js/dashboard.js"></script>
 <script src="/js/editPost.js"></script>
