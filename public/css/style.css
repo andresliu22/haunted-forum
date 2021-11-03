@@ -30,6 +30,10 @@ i {
   transition: all 0.3s linear;
 }
 
+.new-post-nav {
+  cursor: pointer;
+}
+
 .rotated {
   transform: rotate(90deg);
 }
@@ -95,8 +99,8 @@ i {
 }
 
 .arrow-container {
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   border-radius: 100%;
   background: var(--text);
   position: relative;
@@ -109,6 +113,7 @@ i {
   transition: all 0.2s linear;
   opacity: 0%;
   z-index: 3;
+  border: 8px solid var(--main);
 }
 
 .arrow-container > i {

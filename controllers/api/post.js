@@ -10,7 +10,7 @@ router
   .post(forbidIfNotLogged, async (req, res) => {
     try {
       const newPost = await Post.create({
-        creation_date: date.toDateString(),
+        creation_date: date,
         specific_location: req.body.specific_location,
         image_link: req.body.image_link,
         title: req.body.title,
@@ -112,7 +112,7 @@ router
     try {
       console.log(req.body, req.params);
       const commented = await Comment.create({
-        creation_date: date.toDateString(),
+        creation_date: date,
         body: req.body.body,
         user_id: req.session.userId,
         post_id: req.params.id,

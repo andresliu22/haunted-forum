@@ -13,7 +13,7 @@ router
   .post(async (req, res) => {
     try {
       const created = await User.create({
-        creation_date: date.toDateString(),
+        creation_date: date,
         email: req.body.email,
         username: req.body.username,
         password: req.body.password,
