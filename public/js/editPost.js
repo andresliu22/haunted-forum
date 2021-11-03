@@ -5,25 +5,20 @@ const editPostBtn = document.querySelector('.editPost');
 var post_id;
 
 const handleEditPost = async (e) => {
-  console.log("RAWREARSAA");
-  console.log(post_id);
-  const location = document
+  const specific_location = document
     .querySelectorAll('.edit-modal-body input')[0]
     .value.trim();
-  const specific_location = document
+  const image_link = document
     .querySelectorAll('.edit-modal-body input')[1]
     .value.trim();
-  const image_link = document
-    .querySelectorAll('.edit-modal-body input')[2]
-    .value.trim();
-  const title = document.querySelectorAll('.edit-modal-body input')[3].value.trim();
+  const title = document.querySelectorAll('.edit-modal-body input')[2].value.trim();
   const body = document
     .querySelectorAll('.edit-modal-body textarea')[0]
     .value.trim();
 
-  console.log(location, specific_location, image_link, title, body);
+  console.log(specific_location, image_link, title, body);
 
-  if (!location || !specific_location || !image_link || !title || !body) {
+  if (!specific_location || !image_link || !title || !body) {
     alert('Please fill in all the fields!');
     return;
   }
@@ -35,7 +30,6 @@ const handleEditPost = async (e) => {
   const response = await fetch(`/api/posts/${post_id}`, {
     method: 'PUT',
     body: JSON.stringify({
-      location,
       specific_location,
       image_link,
       title,
@@ -63,12 +57,10 @@ const handleDeletePost = async (e) => {
 const getPostId = (e) => {
     post_id = e.target.getAttribute('data-post');
     const post = JSON.parse(e.target.getAttribute('data-object'));
-    console.log(post['specific_location']);
-    document.querySelectorAll('.edit-modal-body input')[0].value = post[location];
-    document.querySelectorAll('.edit-modal-body input')[1].value = post[specific_location];
-    document.querySelectorAll('.edit-modal-body input')[2].value = post[image_link];
-    document.querySelectorAll('.edit-modal-body input')[3].value = post[title];
-    document.querySelectorAll('.edit-modal-body textarea')[0].value = post[body];
+    document.querySelectorAll('.edit-modal-body input')[0].value = post['specific_location'];
+    document.querySelectorAll('.edit-modal-body input')[1].value = post['image_link'];
+    document.querySelectorAll('.edit-modal-body input')[2].value = post['title'];
+    document.querySelectorAll('.edit-modal-body textarea')[0].value = post['body'];
 
 }
 
