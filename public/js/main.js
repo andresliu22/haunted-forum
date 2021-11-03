@@ -25,10 +25,12 @@ const renderPosts = (posts) => {
     aTag.setAttribute('href', `/posts/${post.id}`);
     aTag.classList.add('post-card');
     aTag.classList.add('mb-2');
-    aTag.innerHTML = `<div class="card w-100">
+    aTag.style.height = '175px';
+    aTag.style.textDecoration = 'none';
+    aTag.innerHTML = `<div class="card w-100" style="height: 160px; overflow: hidden;">
     <div class="card-body">
       <div>
-        <img class="float-left" src="${post.image_link}" style="max-width:50px">
+        <img class="float-left" src="${post.image_link}" style="max-width:60px">
       </div>
       <div>
         <h5 class="card-title">${post.title}</h5>
