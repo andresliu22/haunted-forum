@@ -7,7 +7,7 @@
                 <h5 class="card-title">{{title}}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">{{post.user.username}}</h6>
                 <p class="card-text">{{post.body}}</p>
-                <p>Date posted {{format_date post.creation_date}} at {{format_time post.creation_date}}</p>
+                <p>Posted on {{format_date post.creation_date}} at {{format_time post.creation_date}}</p>
             </div>
         </div>
         {{#each post.comments as |comment|}}
@@ -16,9 +16,11 @@
             <div class="card-header bg-secondary"><h3>{{comment.user.username}}</h3></div>
             <div class="card-body">
                 <p>{{comment.body}}</p>
-                <p>Date posted: {{format_date comment.creation_date}}</p>    
+                <p>Posted on {{format_date comment.creation_date}} at {{format_time comment.creation_date}}</p>    
             </div>
-        
+        {{#if canDelete}}
+            <button data-id="{{id}}" class="btn btn-danger delete-comment-btn" style="width: 100px; position: relative; left: 85%;">Delete</button>
+        {{/if}}
         </div>
         {{/each}}
 
@@ -26,7 +28,7 @@
             <br>
             <form class="form w-100" id="comment-form">
                 <div class="form-group w-100">
-                    <input class="form-input w-100" type="text" id="new-comment"/>
+                    <textarea class="form-input w-100" type="text" id="new-comment" style="resize: none;"></textarea>
                 </div>
                 <div class="form-group">
                     <button class="btn btn-secondary submit" id="comment-btn">Add Comment</button>
