@@ -4,7 +4,7 @@ const {
   redirectIfNotLogged,
 } = require('../../utils/forRoutes');
 const { User, Location, Post, Comment } = require('../../models');
-
+const date = new Date();
 // Post editing/deleting
 // Find the post by id. If req.session.userId is equal to the post's user_id, then render the edit page for it, otherwise redirect home - someone hacking lol
 
@@ -15,10 +15,14 @@ router.get('/', redirectIfNotLogged, async (req, res) => {
       include: [{ model: Post, attributes: { exclude: ['user_id'] } }],
     });
 
-    !userData ? res.status(404).json(new Error('There was an error!')) : null;
 
+    !userData ? res.status(404).json(new Error('There was an error!')) : null;
+  
     const user = await userData.get({ plain: true });
-    res.render('dashboard', { loggedIn: req.session.loggedIn, user });
+    const daysCreated = parseInt((date - user.creation_date) / (1000 * 60 * 60 * 24));
+    let createdToday = false
+    daysCreated == 0 ? createdToday = true : createdToday = false;
+    res.render('dashboard', { loggedIn: req.session.loggedIn, user, daysCreated: daysCreated, createdToday: createdToday });
   } catch (err) {
     res.status(500).json(err);
   }
