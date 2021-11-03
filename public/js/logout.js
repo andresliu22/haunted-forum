@@ -18,6 +18,8 @@ document.querySelector(".new-post").addEventListener("mouseover", () => {
 const handleVote = async (e) => {
   const id = e.target.getAttribute("data-id");
 
+  console.log(id);
+
   const response = await fetch(`/api/posts/${id}/upvote`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },

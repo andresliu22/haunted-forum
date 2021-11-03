@@ -10,8 +10,9 @@
                 <p>{{post.location.name}}</p>
                 <p>Posted on {{format_date post.creation_date}} at {{format_time post.creation_date}}</p>
                 {{#if loggedIn}}
-                <button class="vote-btn" data-id="{{post.id}}><i class="fa-solid fa-face-scream"></i></button>
+                <button class="vote-btn" data-id="{{post.id}}"><i data-id="{{post.id}}" class="fas fa-ghost"></i></button>
                 {{/if}}
+                <p>Upvotes: {{post.upVotes}}</p>
             </div>
         </div>
         {{#if loggedIn}}
