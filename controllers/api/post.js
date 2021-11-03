@@ -1,12 +1,13 @@
-const router = require('express').Router();
-const { User, Location, Post, Comment } = require('../../models');
+const router = require("express").Router();
+const { User, Location, Post, Comment, Vote } = require("../../models");
 // If they're not even logged in, immediately throw a forbidden 403
 // For tasks we don't want to even risk initializing if they're not logged in
-const { forbidIfNotLogged } = require('../../utils/forRoutes');
+const { forbidIfNotLogged } = require("../../utils/forRoutes");
 const date = new Date();
+const sequelize = require("../../config/connection");
 
 router
-  .route('/')
+  .route("/")
   .post(forbidIfNotLogged, async (req, res) => {
     try {
       //Find the user's posts
@@ -14,7 +15,7 @@ router
         where: {
           user_id: req.session.userId,
         },
-        order: [['id', 'DESC']],
+        order: [["id", "DESC"]],
       });
 
       // This will be minutes since last post
@@ -35,7 +36,7 @@ router
       if (minutes < 10) {
         res
           .status(404)
-          .json({ message: 'Can only post once every 10 minutes!' });
+          .json({ message: "Can only post once every 10 minutes!" });
       }
 
       const newPost = await Post.create({
@@ -50,7 +51,7 @@ router
         // From the cookie. Posts it for the user currently logged in
         user_id: req.session.userId,
       });
-      !newPost ? res.status(404).json(new Error('There was an error!')) : null;
+      !newPost ? res.status(404).json(new Error("There was an error!")) : null;
 
       res.status(200).json(newPost);
     } catch (err) {
@@ -68,7 +69,7 @@ router
         },
       });
       !location || !locationData
-        ? res.status(404).json(new Error('There was an error!'))
+        ? res.status(404).json(new Error("There was an error!"))
         : null;
       const postData = await Post.findAll(
         {
@@ -90,7 +91,7 @@ router
   });
 
 router
-  .route('/:id')
+  .route("/:id")
   .put(forbidIfNotLogged, async (req, res) => {
     try {
       const edited = await Post.update(
@@ -109,7 +110,7 @@ router
         }
       );
 
-      !edited ? res.status(404).json(new Error('There was an error!')) : null;
+      !edited ? res.status(404).json(new Error("There was an error!")) : null;
 
       res.status(200).json(edited);
     } catch (err) {
@@ -127,7 +128,7 @@ router
         },
       });
 
-      !deleted ? res.status(404).json(new Error('There was an error!')) : null;
+      !deleted ? res.status(404).json(new Error("There was an error!")) : null;
 
       res.status(200).json(deleted);
     } catch (err) {
@@ -136,7 +137,7 @@ router
   });
 
 router
-  .route('/:id/comment')
+  .route("/:id/comment")
   .post(forbidIfNotLogged, async (req, res) => {
     try {
       console.log(req.body, req.params);
@@ -148,7 +149,7 @@ router
       });
       console.log(commented);
       !commented
-        ? res.status(404).json(new Error('There was an error!'))
+        ? res.status(404).json(new Error("There was an error!"))
         : null;
 
       res.status(200).json(commented);
@@ -185,12 +186,41 @@ router
         },
       });
 
-      !deleted ? res.status(404).json(new Error('There was an error!')) : null;
+      !deleted ? res.status(404).json(new Error("There was an error!")) : null;
 
       res.status(200).json(deleted);
     } catch (err) {
       res.status(500).json(err);
     }
   });
+
+router.post("/:id/upvote", async (req, res) => {
+  try {
+    // console.log(req.params.id);
+    const voteCount = await sequelize.query(
+      `UPDATE post SET up_votes = up_votes + 1 WHERE id=${req.params.id}`
+    );
+    !voteCount ? res.status(400).json("Vote failed") : null;
+
+    const votesData = await Vote.findAll({
+      where: { user_id: req.session.userId, post_id: req.params.id },
+    });
+
+    if (votesData.length > 0) {
+      res.status(403).json("Cannot vote twice");
+      return;
+    }
+
+    const votedFor = await Vote.create({
+      user_id: req.session.userId,
+      post_id: req.params.id,
+    });
+
+    res.status(200).json({ votedFor, voteCount });
+  } catch (err) {
+    res.status(500).json(err);
+    console.log(err);
+  }
+});
 
 module.exports = router;
