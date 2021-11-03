@@ -27,12 +27,19 @@ router.get('/:id', async (req, res) => {
     const postData = await Post.findByPk(req.params.id, {
       include: [
         { model: User }, {model: Location}, 
-        { model: Comment, include: [{ model: User }] },
+        { model: Comment, include: [{ model: User }]},
       ],
     });
     // console.log(postData);
     !postData ? res.status(404).json(new Error('Failed to grab post')) : null;
     const post = postData.get({ plain: true });
+
+    post.comments.sort((a, b) => {
+      if( a.id > b.id) {
+        return -1;
+      }
+    })
+    
     post.comments.forEach((comment) => {
       if (comment.user_id === req.session.userId) {
         comment.canDelete = true;
