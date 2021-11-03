@@ -29,14 +29,14 @@ Post.init(
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [1, 20],
+        len: [1, 250],
       },
     },
     body: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [15, 500],
+        len: [15, 10000],
       },
     },
     // When the user edits a post, this is set to true and "edited" is displayed on post
