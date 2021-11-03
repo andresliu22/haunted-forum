@@ -11,6 +11,9 @@
       <p class="card-text">{{body}}</p>
       <p>{{location.name}}</p>
       <h6>Posted on {{format_date creation_date}} at {{format_time creation_date}}</h6>
+      {{#if loggedIn}}
+      <button class="vote-btn"><i class="fa-solid fa-face-scream"></i></button>
+      {{/if}}
     </div>
 
   </div>

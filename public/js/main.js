@@ -65,3 +65,5 @@ const handleSearch = async (e) => {
 button.addEventListener('click', handleSearch);
 
 //HIDE the .results-column and the .arrow-container UNTIL the search button is clicked!
+
+
