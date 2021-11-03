@@ -1,17 +1,35 @@
 const handleLogout = async () => {
-  const response = await fetch('/api/users/logout', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+  const response = await fetch("/api/users/logout", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
   });
 
   response.ok
-    ? document.location.replace('/')
-    : alert('There was an error logging out!');
+    ? document.location.replace("/")
+    : alert("There was an error logging out!");
 };
 
-document.getElementById('logoutBtn').addEventListener('click', handleLogout);
+document.getElementById("logoutBtn").addEventListener("click", handleLogout);
 
-document.querySelector('.new-post').addEventListener('mouseover', () => {
-  document.querySelectorAll('.new-post i')[0].classList.toggle('rotated');
+document.querySelector(".new-post").addEventListener("mouseover", () => {
+  document.querySelectorAll(".new-post i")[0].classList.toggle("rotated");
 });
 
+const handleVote = async (e) => {
+  const id = e.target.getAttribute("data-id");
+
+  const response = await fetch(`/api/posts/${id}/upvote`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+  });
+
+  if (response.ok) {
+    e.target.disabled = true;
+  } else {
+    alert("Failed to upvote");
+  }
+};
+
+if (document.querySelector(".vote-btn")) {
+  document.querySelector(".vote-btn").addEventListener("click", handleVote);
+}
