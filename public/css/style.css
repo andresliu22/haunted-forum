@@ -126,6 +126,19 @@ i {
   min-width: 300px;
 }
 
+.vote-btn {
+  padding: 10px;
+  background: var(--secondary);
+  border-radius: 5px;
+  color: var(--text);
+  cursor: pointer;
+  font-size: 2rem;
+}
+
+.vote-btn:hover {
+  transform: scale(1.05);
+}
+
 @media screen and (max-width: 575px) {
   .navbar {
     height: auto;

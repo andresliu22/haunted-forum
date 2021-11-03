@@ -1,9 +1,10 @@
 const router = require('express').Router();
-const { User, Location, Post, Comment } = require('../../models');
+const { User, Location, Post, Comment, Vote } = require('../../models');
 // If they're not even logged in, immediately throw a forbidden 403
 // For tasks we don't want to even risk initializing if they're not logged in
 const { forbidIfNotLogged } = require('../../utils/forRoutes');
 const date = new Date();
+const sequelize = require('../../config/connection');
 
 router
   .route('/')
@@ -193,5 +194,34 @@ router
       res.status(500).json(err);
     }
   });
+
+router.post('/:id/upvote', async (req, res) => {
+  try {
+    // console.log(req.params.id);
+    const votesData = await Vote.findAll({
+      where: { user_id: req.session.userId, post_id: req.params.id },
+    });
+
+    if (votesData.length > 0) {
+      res.status(403).json('Cannot vote twice');
+      return;
+    }
+
+    const voteCount = await sequelize.query(
+      `UPDATE post SET up_votes = up_votes + 1 WHERE id=${req.params.id}`
+    );
+    !voteCount ? res.status(400).json('Vote failed') : null;
+
+    const votedFor = await Vote.create({
+      user_id: req.session.userId,
+      post_id: req.params.id,
+    });
+
+    res.status(200).json({ votedFor, voteCount });
+  } catch (err) {
+    res.status(500).json(err);
+    console.log(err);
+  }
+});
 
 module.exports = router;

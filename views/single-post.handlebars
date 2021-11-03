@@ -9,6 +9,10 @@
                 <p class="card-text">{{post.body}}</p>
                 <p>{{post.location.name}}</p>
                 <p>Posted on {{format_date post.creation_date}} at {{format_time post.creation_date}}</p>
+                {{#if loggedIn}}
+                    {{> vote-button}}
+                {{/if}}
+                <p>Upvotes: {{post.upVotes}}</p>
             </div>
         </div>
         {{#if loggedIn}}
