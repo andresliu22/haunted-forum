@@ -48,7 +48,7 @@
         </ul>
         <form class="form-inline">
           {{#if loggedIn}}
-          <button id="logoutBtn" class="btn btn-outline-danger" type="button">Log Out</button>
+          <button class="btn btn-outline-danger" type="button" data-toggle="modal" data-target="#logoutModal" data-whatever="@getbootstrap">Log Out</button>
           {{else}}
           <a href="/login"><button class="btn btn-outline-success" type="button">Log In</button></a>
           {{/if}}
@@ -60,6 +60,7 @@
   {{#if loggedIn}}
     {{> newpostmodal}}
     {{> editpostmodal}}
+    {{> logoutmodal}}
   {{/if}}
 
     {{{body}}}
