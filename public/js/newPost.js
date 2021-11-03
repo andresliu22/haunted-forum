@@ -58,6 +58,10 @@ const handleNewPost = async (e) => {
     alert('Make sure the body is longer than 15 characters!');
   }
 
+  if (title.length > 45) {
+    alert('The title is too long!');
+  }
+
   if (isUrl(image_link) === false) {
     alert('Please make sure you insert a valid link for the image!');
   }
@@ -76,9 +80,7 @@ const handleNewPost = async (e) => {
 
   response.ok
     ? document.location.replace('/dashboard')
-    : alert(
-        'Post failed, try again! Remember that you can only post once every 10 minutes!'
-      );
+    : alert('You can only post once every 10 minutes!');
 };
 
 newPostForm.addEventListener('submit', handleNewPost);
