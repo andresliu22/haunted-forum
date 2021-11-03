@@ -26,7 +26,9 @@ const handleVote = async (e) => {
   });
 
   if (response.ok) {
-    e.target.disabled = true;
+    // document.querySelector(".vote-btn").disabled = true;
+    console.log("Upvoted");
+    document.location.reload();
   } else {
     alert("Failed to upvote");
   }
