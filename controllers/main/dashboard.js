@@ -12,13 +12,14 @@ const date = new Date();
 router.get('/', redirectIfNotLogged, async (req, res) => {
   try {
     const userData = await User.findByPk(req.session.userId, {
-      include: [{ model: Post, attributes: { exclude: ['user_id'] } }],
+      include: [{ model: Post, attributes: { exclude: ['user_id'] }, include: [{model: Comment}] } ],
     });
-
 
     !userData ? res.status(404).json(new Error('There was an error!')) : null;
   
     const user = await userData.get({ plain: true });
+    console.log(user);
+
     const daysCreated = parseInt((date - user.creation_date) / (1000 * 60 * 60 * 24));
     let createdToday = false
     daysCreated == 0 ? createdToday = true : createdToday = false;
