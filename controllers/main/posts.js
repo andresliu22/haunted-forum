@@ -1,6 +1,27 @@
 const router = require('express').Router();
 const { User, Location, Post, Comment } = require('../../models');
 
+// Only show the 10 most featured posts
+router.get('/featured', async (req, res) => {
+  try {
+    const postData = await Post.findAll({
+      include: [{ model: User }, {model: Location}, {model: Comment}],
+      order: [['up_votes', 'DESC']],
+    });
+
+    !postData ? res.status(404).json(new Error('There was an error!')) : null;
+
+    const postsPlain = await postData.map((p) => {
+      return p.get({ plain: true });
+    });
+    const posts = postsPlain.slice(0, 10);
+
+    res.render('featured', { posts, loggedIn: req.session.loggedIn });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 // Only show the 10 most recent posts
 router.get('/recent', async (req, res) => {
   try {
@@ -39,7 +60,7 @@ router.get('/:id', async (req, res) => {
         return -1;
       }
     })
-    
+
     post.comments.forEach((comment) => {
       if (comment.user_id === req.session.userId) {
         comment.canDelete = true;
