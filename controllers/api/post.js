@@ -224,6 +224,22 @@ router.post('/:id/upvote', async (req, res) => {
   }
 });
 
+router.post('/comments/:id/reply', async (req, res) => { 
+  try {
+    const replyData = Reply.create({
+      creation_date: date,
+      body: req.body.body,
+      user_id: req.session.userId,
+      comment_id: req.params.id,
+    })
 
+    !replyData ? res.status(400).json("There was an error!") : null;
+
+    res.status(200).json(replyData);
+
+  } catch (err) {
+    res.status(500).json(err);
+  }
+})
 
 module.exports = router;
