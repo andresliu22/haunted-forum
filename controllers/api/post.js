@@ -202,6 +202,15 @@ router.post("/:id/upvote", async (req, res) => {
     );
     !voteCount ? res.status(400).json("Vote failed") : null;
 
+    const votesData = await Vote.findAll({
+      where: { user_id: req.session.userId, post_id: req.params.id },
+    });
+
+    if (votesData.length > 0) {
+      res.status(403).json("Cannot vote twice");
+      return;
+    }
+
     const votedFor = await Vote.create({
       user_id: req.session.userId,
       post_id: req.params.id,

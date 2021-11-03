@@ -30,7 +30,7 @@ const handleVote = async (e) => {
     console.log("Upvoted");
     document.location.reload();
   } else {
-    alert("Failed to upvote");
+    alert("Cannot vote twice");
   }
 };
 
