@@ -1,3 +1,5 @@
+const e = require("express");
+
 module.exports = {
   format_date: (date) => {
     return date.toLocaleDateString();
@@ -22,4 +24,15 @@ module.exports = {
     if (array.length === 0) return true;
     return false;
   },
+  sortAlpha: (arr) => {
+    let obj = {};
+    arr.forEach(location => {
+      if (obj[location.name[0]]) {
+        obj[location.name[0]].push({nameId: location.name[0], name: location.name, id: location.id});
+      } else {
+        obj[location.name[0]] = [{nameId: location.name[0], name:location.name, id: location.id}];
+      }
+    });
+    return obj;
+  }
 };

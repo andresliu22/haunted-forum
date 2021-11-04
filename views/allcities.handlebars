@@ -1,8 +1,13 @@
 <div class="container" style="height: 90%; overflow-y: scroll;">
     <h2>All Cities</h2>
+    
+    {{#each (sortAlpha locations) as |obj|}}
+    <p>{{@key}}</p>
     <ul style="list-style: circle;">
-    {{#each locations as |location|}}
-        <li><a href="/allcities/{{location.id}}" class="text-color cityhover">{{location.name}}</a></li>
-    {{/each}}
+        {{#each this}}
+        <li><a href="/allcities/{{id}}" class="text-color cityhover">{{name}}</a></li>
+        {{/each}}
     </ul>
+    {{/each}}
+    
 </div>
