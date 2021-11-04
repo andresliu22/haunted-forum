@@ -230,7 +230,7 @@ router.post('/comments/:id/reply', async (req, res) => {
       creation_date: date,
       body: req.body.body,
       user_id: req.session.userId,
-      comment_id: req.params.id,
+      comment_id: req.body.comment_id,
     })
 
     !replyData ? res.status(400).json("There was an error!") : null;
@@ -240,6 +240,6 @@ router.post('/comments/:id/reply', async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
-})
+});
 
 module.exports = router;

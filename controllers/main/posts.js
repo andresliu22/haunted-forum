@@ -70,6 +70,12 @@ router.get('/:id', async (req, res) => {
         comment.canDelete = false;
       }
       
+      comment.replies.sort((a, b) => {
+        if( a.id > b.id) {
+          return -1;
+        }
+      })
+
       comment.replies.forEach((reply) => {
         if(reply.user_id === req.session.userId) {
           reply.canDelete = true;

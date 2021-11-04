@@ -44,3 +44,53 @@ if (document.querySelector('.delete-comment-btn')) {
     .querySelector('.delete-comment-btn')
     .addEventListener('click', deleteComment);
 }
+
+
+const addReply = async (event) => {
+  const comment_id = parseInt(event.target.getAttribute('data-comment-id'));
+  const btnId = event.currentTarget.index;
+  console.log(btnId);
+  const replies = document.getElementsByClassName('new-reply');
+  let body;
+
+  for (let index = 0; index < replies.length; index++) {
+    if (index == parseInt(btnId)) {
+      body = replies[index].value;
+      console.log(body)
+    }
+  }
+
+  if (!body) {
+    alert('Fill out the reply field');
+    return;
+  }
+
+  console.log(comment_id);
+
+  const response = await fetch(`/api/posts/comments/${comment_id}/reply`, {
+    method: 'POST',
+    body: JSON.stringify({ body, comment_id }),
+    headers: { 'Content-Type': 'application/json' },
+  });
+
+  if (response.ok) {
+    document.location.reload();
+    return;
+  }
+  alert('Failed to add reply');
+}
+
+const replyBtns = document.querySelectorAll('.reply-btn');
+for (let i = 0; i< replyBtns.length; i++) {
+  replyBtns[i].addEventListener('click', addReply);
+  replyBtns[i].index = i;
+}
+
+
+
+
+const deleteReplyBtns = document.querySelectorAll('.delete-reply-btn');
+for (let i = 0; i< deleteReplyBtns.length; i++) {
+  deleteReplyBtns[i].addEventListener('click', deleteReply);
+  deleteReplyBtns[i].index = i;
+}
