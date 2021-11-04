@@ -32,7 +32,7 @@ const renderPosts = (posts) => {
     const body = post.body.slice(0, 149);
     const date = new Date(post.creation_date).toLocaleDateString();
     const time = new Date(post.creation_date).toLocaleTimeString();
-    aTag.innerHTML = `<div class="card w-100" style="height: 160px overflow: hidden;">
+    aTag.innerHTML = `<div class="card w-100" style="height: 160px overflow: hidden; margin-top: 10px;">
     <div class="card-body d-flex w-100 flex-column">
     <div>
       <img class="float-left" src="${post.image_link}" style="max-width:60px">
