@@ -160,6 +160,10 @@ i {
   width: 90%;
 }
 
+.pac-container {
+  z-index: 10000 !important;
+}
+
 @media screen and (max-width: 575px) {
   .navbar {
     height: auto;
