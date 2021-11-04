@@ -40,7 +40,6 @@ The purpose of this site is to create a forum that users can log into and see po
 
 * [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
 * [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-* [jQuery](https://jquery.com/)
 * [GooglePlacesAPI](https://developers.google.com/places)
 * [MySQL](https://dev.mysql.com/doc/)
 * [Express](https://expressjs.com/)
