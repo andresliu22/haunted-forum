@@ -127,7 +127,7 @@ router.post('/login', async (req, res) => {
 router.post('/logout', async (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {
-      res.status(204).redirect('/login');
+      res.status(200).json({"message": "logout"})
     });
   } else {
     res.status(404).end();
