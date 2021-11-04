@@ -1,5 +1,10 @@
 <div class="container-full">
+{{#if (isEmpty posts)}}
+<h1>No posts for this city!</h1>
+{{else}}
+<h1>All posts for {{posts.[0].location.name}}</h1>
   {{#each posts}}
     {{> post}}
   {{/each}}
+{{/if}}
 </div>

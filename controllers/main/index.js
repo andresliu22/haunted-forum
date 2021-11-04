@@ -51,7 +51,7 @@ router.get('/allcities/:id', async (req, res) => {
   try {
     const postsData = await Post.findAll({
       where: { location_id: req.params?.id },
-      include: [{ model: User }, { model: Comment }],
+      include: [{ model: User }, { model: Comment }, { model: Location }],
     });
 
     !postsData ? res.status(404).json(new Error('Oops 404')) : null;

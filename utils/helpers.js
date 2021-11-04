@@ -18,4 +18,8 @@ module.exports = {
     }
     return text;
   },
+  isEmpty: (array) => {
+    if (array.length === 0) return true;
+    return false;
+  },
 };

@@ -5,11 +5,13 @@ const handleLogout = async () => {
   });
 
   response.ok
-    ? document.location.replace('/')
+    ? document.location.reload()
     : alert('There was an error logging out!');
 };
 
-document.getElementById('logoutBtn').addEventListener('click', handleLogout);
+if (document.getElementById('logoutBtn')) {
+  document.getElementById('logoutBtn').addEventListener('click', handleLogout);
+}
 
 document.querySelector('.new-post').addEventListener('mouseover', () => {
   document.querySelectorAll('.new-post i')[0].classList.toggle('rotated');
