@@ -18,7 +18,7 @@
                 <h6 class="card-subtitle mb-2 text-muted">by <b style="color: black;">{{post.user.username}}</b> in <b style="color:black">{{post.location.name}}</b></h6>
                 <div class="d-flex align-items-between w-100 justify-content-center">
                 </div>
-                <img class="mx-auto d-block" src="{{post.image_link}}" style="max-height: 500px;">
+                <img class="mx-auto d-block single-post-image" src="{{post.image_link}}" style="max-height: 500px;">
                 <p class="card-text">{{post.body}}</p>
             </div>
         {{#if loggedIn}}
