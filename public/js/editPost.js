@@ -16,7 +16,7 @@ const handleEditPost = async (e) => {
     .querySelectorAll('.edit-modal-body textarea')[0]
     .value.trim();
 
-  console.log(specific_location, image_link, title, body);
+  // console.log(specific_location, image_link, title, body);
 
   if (!specific_location || !image_link || !title || !body) {
     alert('Please fill in all the fields!');

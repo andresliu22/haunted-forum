@@ -6,11 +6,10 @@
       <img class="float-left" src="{{image_link}}" style="max-width:60px">
     </div>
     <div>
-      <h5 class="card-title">{{title}}</h5>
-      <h6 class="card-subtitle mb-2 text-muted">by {{user.username}}</h6>
-      <p class="card-text">{{body}}</p>
-      <p>{{location.name}}</p>
+      <h5 class="card-title" style="color: black;">{{title}}</h5>
       <h6>Posted on {{format_date creation_date}} at {{format_time creation_date}}</h6>
+      <h6 class="card-subtitle mb-2 text-muted">by <b style="color: black;">{{user.username}}</b> in <b style="color:black">{{location.name}}</b></h6>
+      <p class="card-text">{{trimText body}}</p>
       <p>Upvotes: {{upVotes}}</p>
       <p>Comments: {{comments.length}}</p>
     </div>

@@ -12,4 +12,10 @@ module.exports = {
     if (param1 == param2) return true;
     return false;
   },
+  trimText: (text) => {
+    if (text.length > 150) {
+      return `${text.slice(0, 149)}...`;
+    }
+    return text;
+  },
 };
