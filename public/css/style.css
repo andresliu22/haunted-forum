@@ -15,6 +15,18 @@ body {
   height: 100vh;
 }
 
+.main-color {
+  background: var(--main);
+}
+
+.secondary-color {
+  background: var(--secondary);
+}
+
+.text-color {
+  color: var(--main);
+}
+
 .navbar {
   background: var(--secondary);
   height: 10%;
@@ -137,6 +149,19 @@ i {
 
 .vote-btn:hover {
   transform: scale(1.05);
+}
+
+.vote-btn:active {
+  background: var(--text);
+  color: var(--secondary);
+}
+
+#contentDiv {
+  width: 90%;
+}
+
+.pac-container {
+  z-index: 10000 !important;
 }
 
 @media screen and (max-width: 575px) {
