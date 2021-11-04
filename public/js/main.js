@@ -20,25 +20,33 @@ document.body.addEventListener('mouseover', () => {
 });
 
 const renderPosts = (posts) => {
+  console.log(posts);
   posts.forEach((post) => {
     const aTag = document.createElement('a');
     aTag.setAttribute('href', `/posts/${post.id}`);
     aTag.classList.add('post-card');
     aTag.classList.add('mb-2');
+    aTag.classList.add('w-100');
     aTag.style.height = '175px';
     aTag.style.textDecoration = 'none';
-    aTag.innerHTML = `<div class="card w-100" style="height: 160px; overflow: hidden;">
-    <div class="card-body">
-      <div>
-        <img class="float-left" src="${post.image_link}" style="max-width:60px">
-      </div>
-      <div>
-        <h5 class="card-title">${post.title}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">Username will go here</h6>
-        <p class="card-text">${post.body}</p>
-        <p>Also need to include the username and date posted</p>
-      </div>
+    const body = post.body.slice(0, 149);
+    const date = new Date(post.creation_date).toLocaleDateString();
+    const time = new Date(post.creation_date).toLocaleTimeString();
+    aTag.innerHTML = `<div class="card w-100" style="height: 160px overflow: hidden;">
+    <div class="card-body d-flex w-100 flex-column">
+    <div>
+      <img class="float-left" src="${post.image_link}" style="max-width:60px">
     </div>
+    <div>
+      <h5 class="card-title" style="color: black;">${post.title}</h5>
+      <h6>Posted on ${date} at ${time}</h6>
+      <h6 class="card-subtitle mb-2 text-muted">Specific Area: <b style="color:black">${post.specific_location}</b></h6>
+      <p class="card-text">${body}</p>
+    </div>
+    <div class="w-100 d-flex justify-content-evenly">
+    <p>Upvotes: ${post.upVotes}</p>
+  </div>
+  </div>
   </div>`;
     document.querySelector('#contentDiv').appendChild(aTag);
   });
@@ -65,5 +73,3 @@ const handleSearch = async (e) => {
 button.addEventListener('click', handleSearch);
 
 //HIDE the .results-column and the .arrow-container UNTIL the search button is clicked!
-
-

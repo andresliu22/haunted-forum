@@ -224,25 +224,24 @@ router.post('/:id/upvote', async (req, res) => {
   }
 });
 
-router.post('/comments/:id/reply', async (req, res) => { 
+router.post('/comments/:id/reply', async (req, res) => {
   try {
     const replyData = Reply.create({
       creation_date: date,
       body: req.body.body,
       user_id: req.session.userId,
       comment_id: req.body.comment_id,
-    })
+    });
 
-    !replyData ? res.status(400).json("There was an error!") : null;
+    !replyData ? res.status(400).json('There was an error!') : null;
 
     res.status(200).json(replyData);
-
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-router.delete('/comments/reply/:id', async (req, res) => { 
+router.delete('/comments/reply/:id', async (req, res) => {
   try {
     const deleteReply = await Reply.destroy({
       where: {
@@ -251,7 +250,9 @@ router.delete('/comments/reply/:id', async (req, res) => {
       },
     });
 
-    !deleteReply ? res.status(404).json(new Error('There was an error!')) : null;
+    !deleteReply
+      ? res.status(404).json(new Error('There was an error!'))
+      : null;
 
     res.status(200).json(deleteReply);
   } catch (err) {

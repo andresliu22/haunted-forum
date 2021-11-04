@@ -156,6 +156,10 @@ i {
   color: var(--secondary);
 }
 
+#contentDiv {
+  width: 90%;
+}
+
 @media screen and (max-width: 575px) {
   .navbar {
     height: auto;
