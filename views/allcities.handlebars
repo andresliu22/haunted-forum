@@ -1,10 +1,8 @@
-<div class="container">
+<div class="container" style="height: 90%; overflow-y: scroll;">
     <h2>All Cities</h2>
-    <div class="row align-items-start">
-        {{#each locations as |location|}}
-        <div class="col-4">
-            <a href="/{{location.id}}">{{location.name}}</a>
-        </div>
+    <ul style="list-style: circle;">
+    {{#each locations as |location|}}
+        <li><a href="/allcities/{{location.id}}" class="text-color cityhover">{{location.name}}</a></li>
     {{/each}}
-    </div>
+    </ul>
 </div>

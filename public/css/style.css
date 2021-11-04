@@ -24,7 +24,12 @@ body {
 }
 
 .text-color {
-  color: var(--main);
+  color: var(--text);
+}
+
+.cityhover:hover {
+  color: lightblue;
+  transition: all 0.2s linear;
 }
 
 .navbar {
