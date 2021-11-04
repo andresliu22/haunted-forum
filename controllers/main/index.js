@@ -35,6 +35,7 @@ router.get('/allcities', async (req, res) => {
           attributes: ['id', 'creation_date', 'title', 'body', 'image_link'],
         },
       ],
+      order: [['name', 'ASC']],
     });
     const locations = locationData.map((location) =>
       location.get({ plain: true })
@@ -43,6 +44,26 @@ router.get('/allcities', async (req, res) => {
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
+  }
+});
+
+router.get('/allcities/:id', async (req, res) => {
+  try {
+    const postsData = await Post.findAll({
+      where: { location_id: req.params?.id },
+      include: [{ model: User }, { model: Comment }, { model: Location }],
+    });
+
+    !postsData ? res.status(404).json(new Error('Oops 404')) : null;
+
+    const posts = await postsData.map((post) => post.get({ plain: true }));
+
+    res.render('postsForCity', {
+      loggedIn: req.session.loggedIn,
+      posts,
+    });
+  } catch (err) {
+    res.status(500).json('Oops');
   }
 });
 

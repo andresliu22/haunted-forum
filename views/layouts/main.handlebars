@@ -57,7 +57,7 @@
       </div>
     </nav>
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key={{getPlacesKey}}&libraries=places"></script>
-
+    {{!-- If logged in, source the logout.js for logout functionality --}}
   {{#if loggedIn}}
     {{> newpostmodal}}
     {{> editpostmodal}}
@@ -66,10 +66,10 @@
 
     {{{body}}}
 
-    {{!-- If logged in, source the logout.js for logout functionality --}}
-    {{#if loggedIn}}
+        {{#if loggedIn}}
     <script src="/js/logout.js"></script>
     {{/if}}
+
     {{!-- Linking Bootstrap Stuff --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
