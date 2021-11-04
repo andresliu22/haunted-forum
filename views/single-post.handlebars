@@ -34,10 +34,37 @@
                 <p>{{comment.body}}</p>
                 <p>Posted on {{format_date comment.creation_date}} at {{format_time comment.creation_date}}</p>    
             </div>
-        {{#if canDelete}}
+        {{#if comment.canDelete}}
             <button data-id="{{id}}" class="btn btn-danger delete-comment-btn" style="width: 100px; position: relative; left: 85%;">Delete</button>
         {{/if}}
+
+        {{#if comment.loggedIn}}
+            <div class="form-group w-100">
+                <textarea class="form-input w-100 new-reply" type="text" style="resize: none;"></textarea>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-secondary reply-btn" type="button" data-comment-id="{{comment.id}}">Add Reply</button>
+            </div>
+        {{/if}}
         </div>
+
+        {{#each comment.replies}}
+        <div class="card w-80">
+            <div class="card-header">
+                {{user.username}}
+            </div>
+            <div class="card-body">
+                <p>{{body}}</p>
+                <p>Replied on {{format_date creation_date}} at {{format_time creation_date}}</p>
+            </div>
+        {{#if canDelete}}
+            <button data-id="{{id}}" class="btn btn-danger delete-reply-btn" style="width: 150px; position: relative; left: 85%;">Delete Reply</button>
+        {{/if}}
+        </div>
+            
+        {{/each}}
+            
+
         {{/each}}
     
 </div>

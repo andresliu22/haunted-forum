@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Location, Post, Comment } = require('../../models');
+const { User, Location, Post, Comment, Reply } = require('../../models');
 
 // Only show the 10 most featured posts
 router.get('/featured', async (req, res) => {
@@ -48,7 +48,8 @@ router.get('/:id', async (req, res) => {
     const postData = await Post.findByPk(req.params.id, {
       include: [
         { model: User }, {model: Location}, 
-        { model: Comment, include: [{ model: User }]},
+        { model: Comment, include: [{ model: User }, 
+          { model: Reply, include: [{ model: User }]}]},
       ],
     });
     // console.log(postData);
@@ -62,14 +63,29 @@ router.get('/:id', async (req, res) => {
     })
 
     post.comments.forEach((comment) => {
+      comment.loggedIn = req.session.loggedIn;
       if (comment.user_id === req.session.userId) {
         comment.canDelete = true;
       } else {
         comment.canDelete = false;
       }
-      console.log(post);
+      
+      comment.replies.sort((a, b) => {
+        if( a.id > b.id) {
+          return -1;
+        }
+      })
+
+      comment.replies.forEach((reply) => {
+        if(reply.user_id === req.session.userId) {
+          reply.canDelete = true;
+        } else {
+          reply.canDelete = false;
+        }
+      })
     });
-    console.log(req.session.userId);
+    
+
     res.render('single-post', {
       post,
       loggedIn: req.session.loggedIn,
