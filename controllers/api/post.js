@@ -40,6 +40,26 @@ router
         return;
       }
 
+      // Find locations if it's a match
+      const locationData = await Location.findOne({
+        where: {
+          name: req.body.location,
+        },
+      });
+
+      let locationId;
+
+      // If location not exist, create new one and grab the id
+      if (locationData === null) {
+        const newLocation = await Location.create({
+          name: req.body.location,
+        });
+        locationId = newLocation.dataValues.id;
+      } else {
+        //If does exist, grab that id
+        locationId = locationData.dataValues.id;
+      }
+
       const newPost = await Post.create({
         creation_date: date,
         specific_location: req.body.specific_location,
@@ -48,7 +68,7 @@ router
         body: req.body.body,
         edited: false,
         // Perhaps this can be pulled from the params/query in the url
-        location_id: req.body.location_id,
+        location_id: locationId,
         // From the cookie. Posts it for the user currently logged in
         user_id: req.session.userId,
       });
@@ -77,6 +97,7 @@ router
           where: {
             location_id: locationData[0].dataValues.id,
           },
+          order: [['id', 'DESC']],
         },
         {
           include: [{ model: User }],
