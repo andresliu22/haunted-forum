@@ -242,4 +242,21 @@ router.post('/comments/:id/reply', async (req, res) => {
   }
 });
 
+router.delete('/comments/reply/:id', async (req, res) => { 
+  try {
+    const deleteReply = await Reply.destroy({
+      where: {
+        id: req.params.id,
+        user_id: req.session.userId,
+      },
+    });
+
+    !deleteReply ? res.status(404).json(new Error('There was an error!')) : null;
+
+    res.status(200).json(deleteReply);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;

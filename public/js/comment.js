@@ -87,10 +87,17 @@ for (let i = 0; i< replyBtns.length; i++) {
 }
 
 
-
+const deleteReply = async (e) => {
+  e.preventDefault();
+  const id = e.target.getAttribute('data-id');
+  const response = await fetch(`/api/posts/comments/reply/${id}`, {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' },
+  });
+  response.ok ? document.location.reload() : alert('Failed to delete reply!');
+};
 
 const deleteReplyBtns = document.querySelectorAll('.delete-reply-btn');
 for (let i = 0; i< deleteReplyBtns.length; i++) {
   deleteReplyBtns[i].addEventListener('click', deleteReply);
-  deleteReplyBtns[i].index = i;
 }
