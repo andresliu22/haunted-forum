@@ -4,7 +4,7 @@
             <div class="card-header secondary-color d-flex justify-content-between text-center">
                 <div>
                     <h2>{{post.title}}</h2>
-                    <p>Posted on {{format_date post.creation_date}} at {{format_time post.creation_date}}</p>
+                    <p class="time-stamp">{{post.creation_date}}</p>
                 </div>
                 <div>
                     {{#if loggedIn}}
@@ -40,7 +40,7 @@
         <div class="card w-100" style="border: 2px solid grey;">
             <div class="w-100 secondary-color d-flex align-items-center justify-content-between" style="height: auto;">
                 <h4>{{comment.user.username}}</h4>
-                <p>Posted on {{format_date comment.creation_date}} at {{format_time comment.creation_date}}</p>
+                <p class="time-stamp">{{comment.creation_date}}</p>
             </div>
             <div class="card-body">
                 <p>{{comment.body}}</p>
@@ -63,7 +63,7 @@
         <div class="card w-80" style="margin-left: 15%; border: 2px solid grey;">
             <div class="w-100 secondary-color d-flex align-items-center justify-content-between" style="height: auto;">
                 <h4>{{user.username}}</h4>
-                <p>Replied on {{format_date creation_date}} at {{format_time creation_date}}</p>
+                <p class="time-stamp">{{creation_date}}</p>
             </div>
             <div class="card-body">
                 <p>{{body}}</p>

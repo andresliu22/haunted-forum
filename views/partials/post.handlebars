@@ -7,7 +7,7 @@
     </div>
     <div>
       <h5 class="card-title" style="color: black;">{{title}}</h5>
-      <h6>Posted on {{format_date creation_date}} at {{format_time creation_date}}</h6>
+      <h6 class="time-stamp">{{creation_date}}</h6>
       <h6 class="card-subtitle mb-2 text-muted">by <b style="color: black;">{{user.username}}</b> in <b style="color:black">{{location.name}}</b></h6>
       <p class="card-text">{{trimText body}}</p>
       <div class="w-100 d-flex justify-content-evenly">
