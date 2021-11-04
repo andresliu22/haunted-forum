@@ -10,35 +10,35 @@ router
   .route('/')
   .post(forbidIfNotLogged, async (req, res) => {
     try {
-      //Find the user's posts
-      const userRecentPostData = await Post.findAll({
-        where: {
-          user_id: req.session.userId,
-        },
-        order: [['id', 'DESC']],
-      });
+      // //Find the user's posts
+      // const userRecentPostData = await Post.findAll({
+      //   where: {
+      //     user_id: req.session.userId,
+      //   },
+      //   order: [['id', 'DESC']],
+      // });
 
-      // This will be minutes since last post
-      let minutes;
+      // // This will be minutes since last post
+      // let minutes;
 
-      // If the user has no posts, just let minutes be 60
-      if (userRecentPostData.length === 0) {
-        minutes = 60;
-        // Otherwise, minutes = compare the lastPostDate to our current date object declared at the top of doc
-      } else {
-        const lastPostDate = userRecentPostData[0].dataValues.creation_date;
+      // // If the user has no posts, just let minutes be 60
+      // if (userRecentPostData.length === 0) {
+      //   minutes = 60;
+      //   // Otherwise, minutes = compare the lastPostDate to our current date object declared at the top of doc
+      // } else {
+      //   const lastPostDate = userRecentPostData[0].dataValues.creation_date;
 
-        minutes = parseInt(
-          (Math.abs(date.getTime() - lastPostDate.getTime()) / (1000 * 60)) % 60
-        );
-      }
-      // If minutes is less than 10, then they are DENIED
-      if (minutes < 10) {
-        res
-          .status(403)
-          .json({ message: 'Can only post once every 10 minutes!' });
-        return;
-      }
+      //   minutes = parseInt(
+      //     (Math.abs(date.getTime() - lastPostDate.getTime()) / (1000 * 60)) % 60
+      //   );
+      // }
+      // // If minutes is less than 10, then they are DENIED
+      // if (minutes < 10) {
+      //   res
+      //     .status(403)
+      //     .json({ message: 'Can only post once every 10 minutes!' });
+      //   return;
+      // }
 
       // Find locations if it's a match
       const locationData = await Location.findOne({

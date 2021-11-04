@@ -83,7 +83,12 @@ router
     try {
       const user = await User.findByPk(req.params.id, {
         include: [
-          { model: Post, attributes: { exclude: ['user_id'] } },
+          {
+            model: Post,
+            attributes: { exclude: ['user_id'] },
+            order: [['id', 'DESC']],
+            limit: 1,
+          },
           { model: Comment, attributes: { exclude: ['user_id'] } },
         ],
       });
@@ -127,11 +132,31 @@ router.post('/login', async (req, res) => {
 router.post('/logout', async (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {
-      res.status(200).json({"message": "logout"})
+      res.status(200).json({ message: 'logout' });
     });
   } else {
     res.status(404).end();
   }
 });
+
+// router.get('/postnow', async (req, res) => {
+//   try {
+//     // const userData = await Post.findAll({
+//     //   where: {
+//     //     user_id: req.session.userId,
+//     //   },
+//     //   order: [['id', 'DESC']],
+//     // });
+//     // console.log(userData);
+
+//     // const post = await userData.get({ plain: true });
+
+//     // res.status(200).json(post);
+//     res.status(200).json({ message: 'hi' });
+//   } catch (err) {
+//     res.status(500).json(err);
+//     console.log(err);
+//   }
+// });
 
 module.exports = router;

@@ -45,8 +45,6 @@ const handleNewPost = async (e) => {
   const title = document.querySelectorAll('.modal-body input')[3].value.trim();
   const body = document.querySelectorAll('.modal-body textarea')[0].value;
 
-  // console.log(location, specific_location, image_link, title, body);
-
   if (!location || !specific_location || !image_link || !title || !body) {
     alert('Please fill in all the fields!');
     return;
@@ -66,6 +64,14 @@ const handleNewPost = async (e) => {
     alert('Please make sure you insert a valid link for the image!');
     return;
   }
+
+  // const userPosts = await fetch('/api/users/postnow', {
+  //   method: 'GET',
+  // });
+
+  // const posts = await userPosts.json();
+
+  // console.log(posts);
 
   const response = await fetch('/api/posts', {
     method: 'POST',
