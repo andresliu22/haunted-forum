@@ -29,7 +29,7 @@ const handleVote = async (e) => {
   if (response.ok) {
     e.target.disabled = true;
     // document.location.reload();
-    pTag.innerText = `Upvghosts: ${parseInt(pTag.innerText.split(" ")[1]) + 1}`;
+    pTag.innerText = `Upghosts: ${parseInt(pTag.innerText.split(" ")[1]) + 1}`;
   } else {
     alert("Cannot vote twice");
   }
