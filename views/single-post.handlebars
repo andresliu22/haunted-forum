@@ -1,21 +1,28 @@
 <div class="container">
         <br>
         <div class="card w-100">
-            <div class="card-header bg-secondary"><h2>{{post.title}}</h2></div>
-            <div class="card-body">
-                <img class="mx-auto d-block" src="{{post.image_link}}" style="w-75">
-                <h5 class="card-title">{{title}}</h5>
-                <h6 class="card-subtitle mb-2 text-muted">{{post.user.username}}</h6>
-                <p class="card-text">{{post.body}}</p>
-                <p>{{post.location.name}}</p>
-                <p>Posted on {{format_date post.creation_date}} at {{format_time post.creation_date}}</p>
-                {{#if loggedIn}}
-                    {{> vote-button}}
-                {{/if}}
-                <p>Upvotes: {{post.upVotes}}</p>
+            <div class="card-header secondary-color d-flex justify-content-between text-center">
+                <div>
+                    <h2>{{post.title}}</h2>
+                    <p>Posted on {{format_date post.creation_date}} at {{format_time post.creation_date}}</p>
+                </div>
+                <div>
+                    {{#if loggedIn}}
+                        {{> vote-button}}
+                    {{/if}}
+                    <p>Upvotes: {{post.upVotes}}</p>
+                </div>
             </div>
-        </div>
+            <div class="card-body">
+                <h5 class="card-title">{{title}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">by <b style="color: black;">{{post.user.username}}</b> in <b style="color:black">{{post.location.name}}</b></h6>
+                <div class="d-flex align-items-between w-100 justify-content-center">
+                </div>
+                <img class="mx-auto d-block" src="{{post.image_link}}" style="width: 50%;">
+                <p class="card-text">{{post.body}}</p>
+            </div>
         {{#if loggedIn}}
+        <div class="w-100 secondary-color mb-2" style="padding: 10px; border-radius: 8px 8px 8px 8px;">
             <form class="form w-100" id="comment-form">
                 <div class="form-group w-100">
                     <textarea class="form-input w-100" type="text" id="new-comment" style="resize: none;"></textarea>
@@ -24,15 +31,19 @@
                     <button class="btn btn-secondary submit" id="comment-btn">Add Comment</button>
                 </div>
             </form>
+        </div>
         {{else}}
         <h4><a href="/login">Log in</a> to leave a comment!</h4>
         {{/if}}
+        <h2>Comments:</h2>
         {{#each post.comments as |comment|}}
-        <div class="card w-100">
-            <div class="card-header bg-secondary"><h3>{{comment.user.username}}</h3></div>
+        <div class="card w-100" style="border: 2px solid grey;">
+            <div class="w-100 secondary-color d-flex align-items-center justify-content-between" style="height: auto;">
+                <h4>{{comment.user.username}}</h4>
+                <p>Posted on {{format_date comment.creation_date}} at {{format_time comment.creation_date}}</p>
+            </div>
             <div class="card-body">
                 <p>{{comment.body}}</p>
-                <p>Posted on {{format_date comment.creation_date}} at {{format_time comment.creation_date}}</p>    
             </div>
         {{#if comment.canDelete}}
             <button data-id="{{id}}" class="btn btn-danger delete-comment-btn" style="width: 100px; position: relative; left: 85%;">Delete</button>
@@ -40,7 +51,7 @@
 
         {{#if comment.loggedIn}}
             <div class="form-group w-100">
-                <textarea class="form-input w-100 new-reply" type="text" style="resize: none;"></textarea>
+                <textarea class="form-input w-100 new-reply" type="text" style="resize: none; height: 3ch"></textarea>
             </div>
             <div class="form-group">
                 <button class="btn btn-secondary reply-btn" type="button" data-comment-id="{{comment.id}}">Add Reply</button>
@@ -49,16 +60,16 @@
         </div>
 
         {{#each comment.replies}}
-        <div class="card w-80">
-            <div class="card-header">
-                {{user.username}}
+        <div class="card w-80" style="margin-left: 15%; border: 2px solid grey;">
+            <div class="w-100 secondary-color d-flex align-items-center justify-content-between" style="height: auto;">
+                <h4>{{user.username}}</h4>
+                <p>Replied on {{format_date creation_date}} at {{format_time creation_date}}</p>
             </div>
             <div class="card-body">
                 <p>{{body}}</p>
-                <p>Replied on {{format_date creation_date}} at {{format_time creation_date}}</p>
             </div>
         {{#if canDelete}}
-            <button data-id="{{id}}" class="btn btn-danger delete-reply-btn" style="width: 150px; position: relative; left: 85%;">Delete Reply</button>
+            <button data-id="{{id}}" class="btn btn-danger delete-reply-btn" style="width: 100px; position: relative; left: 85%;">Delete</button>
         {{/if}}
         </div>
             
@@ -68,6 +79,7 @@
         {{/each}}
     
 </div>
+        </div>
 
 {{#if loggedIn}}
     <script src="/js/comment.js"></script>
