@@ -1,4 +1,4 @@
-# project-2
+# Haunted Forum
 
 ## Table of Contents
 
